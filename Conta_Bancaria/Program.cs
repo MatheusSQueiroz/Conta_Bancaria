@@ -1,4 +1,6 @@
-﻿namespace Conta_Bancaria
+﻿using Conta_Bancaria.Model;
+
+namespace Conta_Bancaria
 {
     internal class Program
     {
@@ -6,10 +8,15 @@
         {
             int option;
 
+            Conta c1 = new Conta(1, 123, 1, "Matheus", 1000000.00M);
+            c1.Visualizar();
+
+
             while (true)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
+
                 Console.WriteLine("**************************************************************");
                 Console.WriteLine("*                                                            *");
                 Console.WriteLine("*                                                            *");
