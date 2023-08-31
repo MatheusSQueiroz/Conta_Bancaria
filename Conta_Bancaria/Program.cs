@@ -4,6 +4,8 @@ namespace Conta_Bancaria
 {
     internal class Program
     {
+        private static ConsoleKeyInfo consoleKeyInfo;
+
         static void Main(string[] args)
         {
             int option;
@@ -48,31 +50,49 @@ namespace Conta_Bancaria
                 switch(option)
                 {
                     case 1: Console.WriteLine("Criar conta:\n");
-                        break; 
-                    
+
+                        KeyPress();
+                        break;
+
                     case 2: Console.WriteLine("Listar todas as contas:\n");
-                        break; 
-                    
+
+                        KeyPress();
+                        break;
+
                     case 3: Console.WriteLine("Buscar conta por número:\n");
-                        break; 
-                    
+
+                        KeyPress();
+                        break;
+
                     case 4: Console.WriteLine("Atualizar dados da conta:\n");
-                        break; 
-                    
+
+                        KeyPress();
+                        break;
+
                     case 5: Console.WriteLine("Apagar conta:\n");
+
+                        KeyPress();
                         break;
-                   
+
                     case 6: Console.WriteLine("Sacar:\n");
+
+                        KeyPress();
                         break;
-                   
+
                     case 7: Console.WriteLine("Depositar:\n");
+
+                        KeyPress();
                         break;
-                    
+
                     case 8: Console.WriteLine("Transferência de valores entre contas:\n");
+
+                        KeyPress();
                         break;
 
                     default:
                         Console.WriteLine("Digite uma opção válida!");
+
+                        KeyPress();
                         break;
                 }
             }
@@ -85,6 +105,15 @@ namespace Conta_Bancaria
             Console.WriteLine("Matheus Queiroz - matheusqrz.dev@gmail.com ");
             Console.WriteLine("Github - https://github.com/MatheusSQueiroz ");
             Console.WriteLine("**************************************************************");
+        }
+
+        static void KeyPress()
+        {
+            do
+            {
+                Console.Write("\nPressione Enter para Continuar...");
+                consoleKeyInfo = Console.ReadKey();
+            } while (consoleKeyInfo.Key != ConsoleKey.Enter);
         }
     }
 }

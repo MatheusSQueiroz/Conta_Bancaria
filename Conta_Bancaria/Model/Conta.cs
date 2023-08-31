@@ -94,7 +94,7 @@ namespace Conta_Bancaria.Model
 
         public void Visualizar()
         {
-            string tipo = "";
+            string tipo = string.Empty;
 
             switch (this.tipo)
             {
