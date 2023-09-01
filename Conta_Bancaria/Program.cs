@@ -13,6 +13,24 @@ namespace Conta_Bancaria
             Conta c1 = new Conta(1, 123, 1, "Matheus", 1000000.00M);
             c1.Visualizar();
 
+            Conta_Corrente cc1 = new Conta_Corrente(2, 987, 1, "Queiroz", 900000.00M, 10000);
+            cc1.Visualizar();
+
+            cc1.Sacar(1000000.00M);
+
+            cc1.Visualizar();
+
+            cc1.Depositar(5000);
+
+            cc1.Visualizar();
+
+            Conta_Poupanca cp1 = new Conta_Poupanca(3, 987, 2, "Zézinho", 900000.00M, 05);
+
+            cp1.Visualizar();
+
+            cp1.Depositar(10000);
+
+            cp1.Visualizar();
 
             while (true)
             {
