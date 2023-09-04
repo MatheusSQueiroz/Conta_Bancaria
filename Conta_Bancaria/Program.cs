@@ -10,9 +10,6 @@ namespace Conta_Bancaria
         {
             int option;
 
-            Conta c1 = new Conta(1, 123, 1, "Matheus", 1000000.00M);
-            c1.Visualizar();
-
             Conta_Corrente cc1 = new Conta_Corrente(2, 987, 1, "Queiroz", 900000.00M, 10000);
             cc1.Visualizar();
 
