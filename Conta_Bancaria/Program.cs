@@ -1,4 +1,5 @@
-﻿using Conta_Bancaria.Model;
+﻿using Conta_Bancaria.Controller;
+using Conta_Bancaria.Model;
 
 namespace Conta_Bancaria
 {
@@ -8,26 +9,20 @@ namespace Conta_Bancaria
 
         static void Main(string[] args)
         {
-            int option;
+            int option, agencia, tipo, aniversario;
+            string? titular;
+            decimal saldo, limite;
 
-            Conta_Corrente cc1 = new Conta_Corrente(2, 987, 1, "Queiroz", 900000.00M, 10000);
-            cc1.Visualizar();
+            ContaController contas = new();
 
-            cc1.Sacar(1000000.00M);
+            Conta_Corrente cc1 = new Conta_Corrente(contas.GerarNumero(), 987, 1, "Queiroz", 900000.00M, 10000);
+            contas.Cadastrar(cc1);
+         
 
-            cc1.Visualizar();
+            Conta_Poupanca cp1 = new Conta_Poupanca(contas.GerarNumero(), 987, 2, "Bugson", 900000.00M, 05);
+            contas.Cadastrar(cp1);
 
-            cc1.Depositar(5000);
-
-            cc1.Visualizar();
-
-            Conta_Poupanca cp1 = new Conta_Poupanca(3, 987, 2, "Zézinho", 900000.00M, 05);
-
-            cp1.Visualizar();
-
-            cp1.Depositar(10000);
-
-            cp1.Visualizar();
+            
 
             while (true)
             {
@@ -66,10 +61,49 @@ namespace Conta_Bancaria
                 {
                     case 1: Console.WriteLine("Criar conta:\n");
 
+                        Console.Write("Digite o número da agência: ");
+                        agencia = Convert.ToInt32(Console.ReadLine());
+
+                        Console.Write("Digite o nome do(a) titular: ");
+                        titular = Console.ReadLine();
+
+                        titular ??= string.Empty;
+
+                        do {
+                            Console.Write("Digite o tipo da conta: ");
+                            tipo = Convert.ToInt32(Console.ReadLine());
+
+                        }while( tipo != 1 && tipo != 2);
+
+                        Console.Write("Digite o saldo da conta: ");
+                        saldo = Convert.ToDecimal(Console.ReadLine());
+
+
+                        switch (tipo)
+                        {
+                            case 1:
+                                Console.Write("Digite o limite da conta: ");
+                                limite = Convert.ToDecimal(Console.ReadLine());
+                                contas.Cadastrar(new Conta_Corrente(contas.GerarNumero(), agencia, tipo,
+                                                                    titular, saldo, limite));
+                            break;
+
+                            case 2:
+                                Console.Write("Digite o dia de aniversário da conta: ");
+                                aniversario = Convert.ToInt32(Console.ReadLine());
+                                contas.Cadastrar(new Conta_Poupanca(contas.GerarNumero(), agencia, tipo,
+                                                                    titular, saldo, aniversario));
+                            break;
+
+                        }
+
+
                         KeyPress();
                         break;
 
                     case 2: Console.WriteLine("Listar todas as contas:\n");
+
+                        contas.ListarTodas();
 
                         KeyPress();
                         break;
